@@ -1,27 +1,36 @@
 #include <stdio.h>
 #include <locale.h>
 
-char nome[50], setor[4];
+char nome[50], setor[50];
 
-int main(void) {
-    setlocale(LC_ALL, "");
-    printf("Digite seu nome completo: ");
-    scanf("%s", nome);
-    printf("Digite o seu setor: ");
-    fflush(stdin);
-    scanf("%s", setor);
+main(void){
+	setlocale(LC_ALL, "");
+	//CADASTRO
+	printf("Digite seu nome completo: ");
+	fgets(nome, 50, stdin);
+	printf("Digite o seu setor: ");
+	fflush(stdin);
+	gets(setor);
 
-    if ((setor[0] == 'A' || setor[0] == 'a') || strcmp(setor, "111") == 0 || (setor[0] == 't' && setor[1] == 'e' && setor[2] == 'c') || (setor[0] == 'T' && setor[1] == 'E' && setor[2] == 'C')) {
-        printf("Selecionado setor: T√©cnico\n\n");
-    } else if ((setor[0] == 'B' || setor[0] == 'b') || strcmp(setor, "112") == 0 || (setor[0] == 'a' && setor[1] == 'n') || (setor[0] == 'A' && setor[1] == 'N')) {
-        printf("Selecionado setor: Analista\n\n");
-    } else if ((setor[0] == 'C' || setor[0] == 'c') || strcmp(setor, "122") == 0 || (setor[0] == 'g' && setor[1] == 'e' && setor[2] == 'r') || (setor[0] == 'G' && setor[1] == 'E' && setor[2] == 'R')) {
-        printf("Selecionado setor: Gerente\n\n");
-    } else if ((setor[0] == 'D' || setor[0] == 'd') || strcmp(setor, "233") == 0 || (setor[0] == 'd' && setor[1] == 'i' && setor[2] == 'r') || (setor[0] == 'D' && setor[1] == 'I' && setor[2] == 'R')) {
-        printf("Selecionado setor: Diretor\n\n");
-    } else {
-        printf("Setor n√£o reconhecido.\n\n");
-    }
+	system("cls");
 
-    return 0;
+	//SETOR E IMPRESS√O
+	if((strcmp(setor, "A")==0) || (strcmp(setor, "a")==0) || (strcmp(setor, "111")==0) || (strcmp(setor, "tec")==0) || (strcmp(setor, "TEC")==0)) {
+		printf("Nome: %s \n", nome);
+		printf("Setor: TÈcnico \n \n");
+	} else if((strcmp(setor, "B")==0) ||(strcmp(setor, "b")==0) || (strcmp(setor, "112")==0) || (strcmp(setor, "an")==0) || (strcmp(setor, "AN")==0)){
+		printf("Nome: %s \n", nome);
+		printf("Setor: Analista \n \n");
+	}else if((strcmp(setor, "C")==0) ||(strcmp(setor, "c")==0) || (strcmp(setor, "122")==0) || (strcmp(setor, "ger")==0) || (strcmp(setor, "GER")==0)){
+		printf("Nome: %s \n", nome);
+		printf("Setor: Gerente \n \n");
+	}else if((strcmp(setor, "D")==0) || (strcmp(setor, "d")==0) || (strcmp(setor, "233")==0) || (strcmp(setor, "dir")==0) || (strcmp(setor, "DIR")==0)){
+		printf("Nome: %s \n", nome);
+		printf("Setor: Diretor \n \n");
+	} else {
+		printf("Digite um setor v·lido! \n \n");
+	}
+	
+	system("pause");
+	return 0;
 }
