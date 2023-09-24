@@ -12,7 +12,7 @@ main(void){
 	printf("CADASTRO DA EMPRESA \n \n");
 	printf("Digite o nome da empresa: ");
 	fgets(nome_empresa, 60, stdin);
-	printf("Digite o endereÁo da empresa: ");
+	printf("Digite o endere√ßo da empresa: ");
 	fflush(stdin);
 	fgets(endereco_empresa, 60, stdin);
 	printf("Primeiro Digite o DDD do telefone: ");
@@ -34,14 +34,14 @@ main(void){
 
 	system("cls");
 	
-	//IMPRESS√O
+	//IMPRESS√ÉO
 	printf("Empresa: 	%s", nome_empresa);
-	printf("EndereÁo: 	%s", endereco_empresa);
+	printf("Endere√ßo: 	%s", endereco_empresa);
 	printf("Telefone: 	%i%i \n", ddd, telefone_empresa);
 	printf("CNPJ: 		%s \n", cnpj);
 	printf("Novos: 		%.2f \n", renda_novos);
 	printf("Seminovos:  	%.2f \n", renda_semi);
-	printf("MÈdia : 	%.2f \n", media);
+	printf("M√©dia : 	%.2f \n", media);
 	printf("Total: 		%.2f \n", total);
 	
 	
@@ -49,11 +49,11 @@ main(void){
 	if (total > 50000){
 		printf("Tamanho: 	Empresa de grande porte \n \n");
 	} else if (total > 10000){
-		printf("Tamanho: 	Empresa de mÈdio porte \n \n");
+		printf("Tamanho: 	Empresa de m√©dio porte \n \n");
 	} else if (total > 0){
 		printf("Tamanho: 	Micro Empresa \n \n");
 	} else {
-		printf("ERRO Ditite valores v·lidos! \n \n");
+		printf("ERRO Ditite valores v√°lidos! \n \n");
 	}
 	
 	system("pause");
