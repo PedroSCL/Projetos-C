@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <locale.h>
 
-main(void){
-    setlocale(LC_ALL, "Portuguese");
-    int numero;
+char nome[50];
+int i;
 
-    for (numero = 1; numero<=3; numero++){
-        printf("NÃºmero: %i\n", numero);
-    }
+main(void){
+	setlocale(LC_ALL, "");
+	
+	for (i = 1; i <= 3; i++){
+		printf("Digite um nome completo de uma série: ");
+		fgets(nome, 50, stdin);
+		system("cls");
+		printf("Série: %s", nome);
+	}
 }
