@@ -56,7 +56,7 @@ main(void) {
 						fflush(stdin);
 						fgets(cor_carro, 50, stdin);
 						printf("Formas de pagamento: \n1 - A vista \n2 - Financiamento \n");
-						printf("Digite a forma de pagamento: ");
+						printf("Escolha a forma de pagamento: ");
 						fflush(stdin);
 						scanf("%i", &forma_pag);
 						switch(forma_pag) {
@@ -126,7 +126,7 @@ main(void) {
 							printf("\n\nAcessório escolhido: Películas\n");
 							break;
 						default:
-							printf("ACESSÓRIO INVÁLIDO, TENTE NOVAMENTE\n");
+							printf("ACESSÓRIO INVÁLIDO, TENTE NOVAMENTE. A COMPRA FOI CANCELADA\n");
 							break;
 					}
 					switch(qntd_acessorios) {
@@ -140,7 +140,7 @@ main(void) {
 							printf("Quantidade: 10 \n\n");
 							break;
 						default:
-							printf("QUANTIDADE INVÁLIDA, TENTE NOVAMENTE!");
+							printf("QUANTIDADE INVÁLIDA, TENTE NOVAMENTE. A COMPRA FOI CANCELADA!");
 							break;
 					}
 					opcao = 0;
