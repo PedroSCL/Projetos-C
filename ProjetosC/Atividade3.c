@@ -6,7 +6,7 @@ char senha_correta[] = "123", senha_digitada[20], nome_cliente[50], telefone[12]
 int opcao, opcao_carro, forma_pag, opcao_acessorio, qntd_acessorios;
 
 main(void) {
-	setlocale(LC_ALL, "");
+	setlocale(LC_ALL, ""); //Sistema de autenticação
 	printf("Sistema Concessionária\n\n\n");
 	printf("Digite a senha: ");
 	scanf("%s", senha_digitada);
@@ -17,9 +17,9 @@ main(void) {
 		scanf("%s", senha_digitada);
 	}
 	printf("SENHA CORRETA\n \n");
-
+	//Programa em si
 	while(opcao != 4) {
-		printf("			SERVIÇOS			\n");
+		printf("\n			SERVIÇOS			\n");
 		printf("1 - Cadastro de clientes \n");
 		printf("2 - Compra de carro \n");
 		printf("3 - Compra de acessório \n");
@@ -28,7 +28,8 @@ main(void) {
 		scanf("%i", &opcao);
 
 		switch(opcao) {
-			case 1:
+				opcao = 0;
+			case 1: //Parte de cadastro de clientes
 				printf("==============CADASTRO DE CLIENTE==============\n\n");
 				printf("Digite o nome do cliente: ");
 				fflush(stdin);
@@ -38,9 +39,9 @@ main(void) {
 				printf("Digite o endereço do cliente: ");
 				fflush(stdin);
 				fgets(endereco, 100, stdin);
-				printf("\n\nCLIENTE CADASTRADO COM SUCESSO! \nInformações: \nNome: %sTelefone: %sEndereço: %s", nome_cliente, telefone, endereco);
+				printf("\n\nCLIENTE CADASTRADO COM SUCESSO! \n\nNome: %sTelefone: %sEndereço: %s \n\n", nome_cliente, telefone, endereco);
 				break;
-			case 2:
+			case 2: //Parte de compra de carros
 				while(opcao_carro != 4) {
 					printf("==============CARROS DISPONÍVEIS============== \n");
 					printf("1 - Fiat Argo \n");
@@ -49,7 +50,7 @@ main(void) {
 					printf("4 - Voltar ao menu anterior\n\n");
 					printf("Digite a opção que deseja: ");
 					scanf("%i", &opcao_carro);
-				
+
 					if ((opcao_carro > 0) && (opcao_carro <= 3)) {
 						printf("Digite a cor desejada: ");
 						fflush(stdin);
@@ -60,64 +61,94 @@ main(void) {
 						scanf("%i", &forma_pag);
 						switch(forma_pag) {
 							case 1:
+								printf("\nCOMPRA FINALIZADA!\n\n");
 								printf("Forma de pagamento: A vista \n");
-								printf("COMPRA FINALIZADA!");
 								break;
 							case 2:
+								printf("\nCOMPRA FINALIZADA! \n\n");
 								printf("Forma de pagamento: Financiamento \n");
-								printf("COMPRA FINALIZADA!");
 								break;
 							default:
-								printf("Valor inválido!");
+								printf("Valor inválido! \n");
 								break;
 						}
-					} else if(opcao_carro = 4){
-						
+					} else if(opcao_carro == 4) {
+						opcao_carro = 0;
+						break;
 					} else {
 						printf("Valor inválido!\n\n");
 					}
 					switch(opcao_carro) {
 						case 1:
-							printf("Carro escolhido: Fiat Argo \nCor: %s", cor_carro);
+							opcao_carro = 4;
+							printf("Carro escolhido: Fiat Argo \nCor: %s \n\n", cor_carro);
 							break;
 						case 2:
-							printf("Carro escolhido: Fiat Cronos \nCor: %s", cor_carro);
+							opcao_carro = 4;
+							printf("Carro escolhido: Fiat Cronos \nCor: %s \n\n", cor_carro);
 							break;
 						case 3:
-							printf("Carro escolhido: Fiat Mobi \nCor: %s", cor_carro);
+							opcao_carro = 4;
+							printf("Carro escolhido: Fiat Mobi \nCor: %s \n\n", cor_carro);
 							break;
 					}
 				}
+				opcao = 0;
 				break;
 
-			case 3:
-				printf("==============ACESSÓRIOS==============s \n");
-				printf("1 - Travas elétricas \n2 - Vidros elétricos \n3 - Películas\n\n");
-				printf("Digite sua opcao: ");
-				fflush(stdin);
-				scanf("%i", &opcao_acessorio);
-				switch(opcao_acessorio) {
-					case 1:
-						printf("\nAcessório escolhido: Travas elétricas\n");
+			case 3: //Compra de acessórios
+				do {
+					opcao = 0;
+					printf("\n\n==============ACESSÓRIOS============== \n\n");
+					printf("1 - Travas elétricas \n2 - Vidros elétricos \n3 - Películas \n4 -Voltar ao menu anterior\n\n");
+					printf("Digite sua opcao: ");
+					fflush(stdin);
+					scanf("%i", &opcao_acessorio);
+
+					if (opcao_acessorio == 4) {
+
 						break;
-					case 2:
-						printf("Acessório escolhido: Vidros elétricos\n");
-						break;
-					case 3:
-						printf("Acessório escolhido: Películas\n");
-						break;
-					default:
-						printf("Valor inválido!\n");
-						break;
-				}
-				printf("\nDigite a quantidade desejada: ");
-				fflush(stdin);
-				scanf("%i", &qntd_acessorios);
-				printf("Quantidade: %i \n\n", qntd_acessorios);
-				opcao = opcao++;
+					}
+
+					printf("\nQUANTIDADE \n\nQNTD: 1\nQNTD: 5\nQNTD: 10\n\n");
+					printf("Escolha a quantidade desejada: ");
+					fflush(stdin);
+					scanf("%i", &qntd_acessorios);
+
+					switch(opcao_acessorio) {
+						case 1:
+							printf("\n\nAcessório escolhido: Travas elétricas\n");
+							break;
+						case 2:
+							printf("\n\nAcessório escolhido: Vidros elétricos\n");
+							break;
+						case 3:
+							printf("\n\nAcessório escolhido: Películas\n");
+							break;
+						default:
+							printf("ACESSÓRIO INVÁLIDO, TENTE NOVAMENTE\n");
+							break;
+					}
+					switch(qntd_acessorios) {
+						case 1:
+							printf("Quantidade: 1 \n\n");
+							break;
+						case 5:
+							printf("Quantidade: 5 \n\n");
+							break;
+						case 10:
+							printf("Quantidade: 10 \n\n");
+							break;
+						default:
+							printf("QUANTIDADE INVÁLIDA, TENTE NOVAMENTE!");
+							break;
+					}
+					opcao = 0;
+				} while ((opcao_acessorio > 3 || opcao_acessorio < 1) || (qntd_acessorios != 1 && qntd_acessorios != 5 && qntd_acessorios != 10));
+
 				break;
-			case 4:
-				printf("PROGRAMA FINALIZADO!");
+			case 4: //Opção de finalizar programa
+				printf("\n\nPROGRAMA FINALIZADO!\n\n");
 				opcao = 4;
 				break;
 			default:
