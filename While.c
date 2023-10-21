@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 
-int i = 1;
+int  i = 1;
 
 main(void){
 	setlocale(LC_ALL, "");
