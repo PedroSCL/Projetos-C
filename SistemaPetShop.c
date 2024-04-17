@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <locale.h>
 #include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 char senha_correta[] = "patinha", senha_digitada[20];
 int opcao_menu,opcao_doutor,i, numeroClientes = 0, opcao_serv[10], opcao_dia[10],numeroDia = 0, numeroConsulta = 0,i = 0,opcao_cliente[10], numeroPets = 0, numero_Serv = 0;
@@ -22,36 +24,36 @@ void imprimirNomePetshop() {
 void banho_tosa() {
 	imprimirNomePetshop();
 	if (numeroPets >= 10) {
-		printf("Número máximo de agendamentos atingido!\n");
+		printf("Nï¿½mero mï¿½ximo de agendamentos atingido!\n");
 	} else {
 		printf("AGENDAR BANHO OU TOSA\n\n");
 		printf("Digite o nome do pet: ");
 		fflush(stdin);
 		scanf("%s", nomesPets[numeroPets]);
 
-		printf("Escolha uma opção para o serviço:\n");
+		printf("Escolha uma opï¿½ï¿½o para o serviï¿½o:\n");
 		printf("1 - Banho\n");
 		printf("2 - Tosa\n");
 		printf("3 - Banho e Tosa\n");
-		printf("Digite a opção desejada: ");
+		printf("Digite a opï¿½ï¿½o desejada: ");
 		fflush(stdin);
 		scanf("%i", &opcao_serv[numeroPets]);
 
 		switch (opcao_serv[numeroPets]) {
 			case 1:
-				printf("\n\nOPÇÃO BANHO SELECIONADA COM SUCESSO!\n");
+				printf("\n\nOPï¿½ï¿½O BANHO SELECIONADA COM SUCESSO!\n");
 				strcpy(opcao_menu2[numeroPets], "Banho");
 				break;
 			case 2:
-				printf("\n\nOPÇÃO TOSA SELECIONADA COM SUCESSO!\n");
+				printf("\n\nOPï¿½ï¿½O TOSA SELECIONADA COM SUCESSO!\n");
 				strcpy(opcao_menu2[numeroPets], "Tosa");
 				break;
 			case 3:
-				printf("\n\nOPÇÃO BANHO E TOSA SELECIONADA COM SUCESSO!\n");
+				printf("\n\nOPï¿½ï¿½O BANHO E TOSA SELECIONADA COM SUCESSO!\n");
 				strcpy(opcao_menu2[numeroPets], "Banho e Tosa");
 				break;
 			default:
-				printf("\n\nOpção inválida, tente novamente!\n\n");
+				printf("\n\nOpï¿½ï¿½o invï¿½lida, tente novamente!\n\n");
 				tempo();
 				limparTela();
 				return;
@@ -68,8 +70,8 @@ void consultas() {
 		imprimirNomePetshop();
 		printf("CONSULTAS \n\n");
 		printf("Datas: \n");
-		printf("1 - Quarta-feira \n2 - Sábado\n");
-		printf("Digite a opção desejada: ");
+		printf("1 - Quarta-feira \n2 - Sï¿½bado\n");
+		printf("Digite a opï¿½ï¿½o desejada: ");
 		scanf("%i", &opcao_dia[numeroConsulta]);
 
 		switch (opcao_dia[numeroConsulta]) {
@@ -77,10 +79,10 @@ void consultas() {
 				strcpy(diaEscolhido[numeroConsulta], "Quarta-feira");
 				break;
 			case 2:
-				strcpy(diaEscolhido[numeroConsulta], "Sábado");
+				strcpy(diaEscolhido[numeroConsulta], "Sï¿½bado");
 				break;
 			default:
-				printf("Opção inválida!\n");
+				printf("Opï¿½ï¿½o invï¿½lida!\n");
 				return;
 		}
 
@@ -89,20 +91,20 @@ void consultas() {
 			printf("%d - %s\n", i + 1, nomesClientes[i]);
 		}
 
-		printf("\nPara qual cliente você deseja marcar a consulta? ");
-		printf("Digite o número do cliente (1 a %d): ", numeroClientes);
+		printf("\nPara qual cliente vocï¿½ deseja marcar a consulta? ");
+		printf("Digite o nï¿½mero do cliente (1 a %d): ", numeroClientes);
 		scanf("%i", &opcao_cliente[numeroConsulta]);
 		opcao_cliente[numeroConsulta]--;  // Ajuste para base 0
 
 		if (opcao_cliente[numeroConsulta] < 0 || opcao_cliente[numeroConsulta] >= numeroClientes) {
-			printf("Opção inválida, tente novamente\n");
+			printf("Opï¿½ï¿½o invï¿½lida, tente novamente\n");
 			return;
 		}
 
 		printf("\nDoutor/Doutora:\n");
 		printf("1 - Pedro Henrique\n");
 		printf("2 - Fabiano\n");
-		printf("Digite a opção desejada: ");
+		printf("Digite a opï¿½ï¿½o desejada: ");
 		scanf("%i", &opcao_doutor);
 
 		switch (opcao_doutor) {
@@ -113,7 +115,7 @@ void consultas() {
 				strcpy(nomeDoutor[numeroConsulta], "Fabiano");
 				break;
 			default:
-				printf("Opção inválida, Dr./Drª não selecionado.\n");
+				printf("Opï¿½ï¿½o invï¿½lida, Dr./Drï¿½ nï¿½o selecionado.\n");
 				return;
 		}
 
@@ -122,24 +124,24 @@ void consultas() {
 		tempo();
 		limparTela();
 	} else {
-		printf("Número máximo de consultas atingido ou nenhum cliente cadastrado!\n");
+		printf("Nï¿½mero mï¿½ximo de consultas atingido ou nenhum cliente cadastrado!\n");
 	}
 }
 
 void imprimirInformacoes() {
 	imprimirNomePetshop();
 
-	printf("INFORMAÇÕES DE CLIENTES CADASTRADOS:\n\n");
+	printf("INFORMAï¿½ï¿½ES DE CLIENTES CADASTRADOS:\n\n");
 	for (i = 0; i < numeroClientes; i++) {
 		printf("%d - Nome: %s, Pet: %s, Telefone: %s\n", i + 1, nomesClientes[i], nomesPets[i], tel[i]);
 	}
 
-	printf("\nINFORMAÇÕES DE AGENDAMENTOS DE BANHO/TOSA:\n\n");
+	printf("\nINFORMAï¿½ï¿½ES DE AGENDAMENTOS DE BANHO/TOSA:\n\n");
 	for (i = 0; i < numeroPets; i++) {
-		printf("%d - Nome do Pet: %s, Serviço: %s\n", i + 1, nomesPets[i], opcao_menu2[i]);
+		printf("%d - Nome do Pet: %s, Serviï¿½o: %s\n", i + 1, nomesPets[i], opcao_menu2[i]);
 	}
 
-	printf("\nINFORMAÇÕES DE CONSULTAS AGENDADAS:\n\n");
+	printf("\nINFORMAï¿½ï¿½ES DE CONSULTAS AGENDADAS:\n\n");
 	for (i = 0; i < numeroConsulta; i++) {
 		printf("%d - Data: %s, Cliente: %s, Doutor/Doutora: %s\n", i + 1, diaEscolhido[i], nomesClientes[opcao_cliente[i]], nomeDoutor[i]);
 	}
@@ -169,7 +171,7 @@ void pedro() {
 
 		numeroClientes++;
 	} else {
-		printf("Número máximo de cadastros atingido!\n");
+		printf("Nï¿½mero mï¿½ximo de cadastros atingido!\n");
 	}
 	tempo();
 	limparTela();
@@ -178,12 +180,12 @@ void pedro() {
 void menu() {
 	do {
 		imprimirNomePetshop();
-		printf("\nMENU \n\n1 – CADASTRAR CLIENTE \n");
-		printf("2 – AGENDAR BANHO OU TOSA \n");
-		printf("3 – CONSULTA \n");
-		printf("4 – IMPRIMIR RELATÓRIO GERAL \n");
+		printf("\nMENU \n\n1 ï¿½ CADASTRAR CLIENTE \n");
+		printf("2 ï¿½ AGENDAR BANHO OU TOSA \n");
+		printf("3 ï¿½ CONSULTA \n");
+		printf("4 ï¿½ IMPRIMIR RELATï¿½RIO GERAL \n");
 		printf("5 - SAIR DO PROGRAMA \n");
-		printf("Digite a opção desejada: ");
+		printf("Digite a opï¿½ï¿½o desejada: ");
 		fflush(stdin);
 		scanf("%i", &opcao_menu);
 
@@ -204,7 +206,7 @@ void menu() {
 				printf("\n\nVolte sempre ao Super_Petshop_PedroHenrique_CC\n\n");
 				break;
 			default:
-				printf("\n\nOpção inválida, tente novamente!\n\n");
+				printf("\n\nOpï¿½ï¿½o invï¿½lida, tente novamente!\n\n");
 				break;
 		}
 

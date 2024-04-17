@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include <locale.h>
+#include <stdlib.h>
 
 float numero1, numero2;
 
-main(void){
+int main(void){
     setlocale(LC_ALL, "Portuguese");
     //Entrada de dados
     printf("Digite o 1º valor: ");
