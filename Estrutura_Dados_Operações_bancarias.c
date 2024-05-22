@@ -1,4 +1,4 @@
-// Vinícius Lázaro Lima Ribeiro
+// VinÃ­cius LÃ¡zaro Lima Ribeiro
 // Pedro Henrique da Silva Correia Lima
 // Marco Antonio Gusmao Petry
 
@@ -7,22 +7,22 @@
 #include <string.h>
 #include <locale.h>
 
-// Definição da struct Cliente
+// DefiniÃ§Ã£o da struct Cliente
 typedef struct {
-    char nome[51]; // 1 espaço extra para o terminador de string '\0'
+    char nome[51]; // 1 espaÃ§o extra para o terminador de string '\0'
     float saldo;
 } Cliente;
 
-// Função para criar um cliente
+// FunÃ§Ã£o para criar um cliente
 Cliente *criarCliente(const char *nome, float saldoInicial) {
     if (nome == NULL || nome[0] == '\0') {
-        printf("Cliente inválido.\n\n");
+        printf("Cliente invÃ¡lido.\n\n");
         return NULL;
     }
 
     Cliente *novoCliente = malloc(sizeof(Cliente));
     if (novoCliente == NULL) {
-        printf("Erro ao alocar memória.\n");
+        printf("Erro ao alocar memÃ³ria.\n");
         return NULL;
     }
 
@@ -32,14 +32,14 @@ Cliente *criarCliente(const char *nome, float saldoInicial) {
     return novoCliente;
 }
 
-// Função para realizar saques
+// FunÃ§Ã£o para realizar saques
 void sacar(Cliente *cliente, float valor) {
     if (cliente == NULL) {
-        printf("Cliente inválido.\n\n");
+        printf("Cliente invÃ¡lido.\n\n");
         return;
     }
     if (valor <= 0) {
-        printf("Valor de saque inválido. Insira um valor positivo.\n");
+        printf("Valor de saque invÃ¡lido. Insira um valor positivo.\n");
         return;
     }
     if (cliente->saldo >= valor) {
@@ -51,30 +51,30 @@ void sacar(Cliente *cliente, float valor) {
     }
 }
 
-// Função para realizar depósitos
+// FunÃ§Ã£o para realizar depÃ³sitos
 void depositar(Cliente *cliente, float valor) {
     if (cliente == NULL) {
-        printf("Cliente inválido.\n\n");
+        printf("Cliente invÃ¡lido.\n\n");
         return;
     }
     if (valor <= 0) {
-        printf("Tentativa de depósito de %s no valor de R$%.2f falhou. Por favor, tente novamente.\n", cliente->nome, valor);
+        printf("Tentativa de depÃ³sito de %s no valor de R$%.2f falhou. Por favor, tente novamente.\n", cliente->nome, valor);
         return;
     }
     cliente->saldo += valor;
-    printf("Depósito Realizado com Sucesso!\n");
+    printf("DepÃ³sito Realizado com Sucesso!\n");
     printf("%s depositou R$%.2f. Novo saldo: R$%.2f\n\n", cliente->nome, valor, cliente->saldo);
 
 }
 
-// Função para transferências entre clientes
+// FunÃ§Ã£o para transferÃªncias entre clientes
 void transferencia(Cliente *remetente, Cliente *destinatario, float valor_trans) {
     if (remetente == NULL || destinatario == NULL) {
-        printf("Cliente Inválido.\n\n");
+        printf("Cliente InvÃ¡lido.\n\n");
         return;
     }
     if (valor_trans <= 0) {
-        printf("Valor de transferência inválido. Por favor, tente novamente!\n");
+        printf("Valor de transferÃªncia invÃ¡lido. Por favor, tente novamente!\n");
         return;
     }
     if (remetente->saldo >= valor_trans) {
@@ -84,27 +84,27 @@ void transferencia(Cliente *remetente, Cliente *destinatario, float valor_trans)
         printf("Novo saldo de %s: R$%.2f.\n", remetente->nome, remetente->saldo);
         printf("Novo saldo de %s: R$%.2f.\n\n", destinatario->nome, destinatario->saldo);
     } else {
-        printf("Operação inválida.\n\n");
+        printf("OperaÃ§Ã£o invÃ¡lida.\n\n");
     }
-}
-// Função para exibir o saldo final de um cliente
-void exibirSaldoFinal(Cliente *cliente) {
-    if (cliente == NULL) {
-        printf("Cliente inválido.\n\n");
-        return;
-    }
-    printf("O saldo final de %s é R$%.2f.\n", cliente->nome, cliente->saldo);
 }
 
+// FunÃ§Ã£o para exibir o saldo final de um cliente
+void exibirSaldoFinal(Cliente *cliente) {
+    if (cliente == NULL) {
+        printf("Cliente invÃ¡lido.\n\n");
+        return;
+    }
+    printf("O saldo final de %s Ã© R$%.2f.\n", cliente->nome, cliente->saldo);
+}
 
 int main() {
     setlocale(LC_ALL, "Portuguese");
     
-    // Criação de dois clientes
+    // CriaÃ§Ã£o de dois clientes
     Cliente *cliente1 = criarCliente("Joao", 1000.00);
     Cliente *cliente2 = criarCliente("Maria", 300.00);
 
-    // Realizando operações
+    // Realizando operaÃ§Ãµes
     depositar(cliente1, 200.0);
     sacar(cliente1, 350.0);
     depositar(cliente2, 300.0);
@@ -115,10 +115,9 @@ int main() {
     exibirSaldoFinal(cliente1);
     exibirSaldoFinal(cliente2);
 
-    // Liberação de memória
+    // LiberaÃ§Ã£o de memÃ³ria
     free(cliente1);
     free(cliente2);
 
     return 0;
 }
-
